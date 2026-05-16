@@ -41,7 +41,7 @@ class Metric(Base):
     source_record_id: Mapped[str] = mapped_column(String, nullable=False)
     metric_type: Mapped[str] = mapped_column(String, nullable=False)
     value: Mapped[Decimal] = mapped_column(Numeric(20, 4), nullable=False)
-    currency: Mapped[str] = mapped_column(String(3), default="INR", server_default="INR", nullable=False)
+    currency: Mapped[str | None] = mapped_column(String(3), nullable=True)
     date: Mapped[date] = mapped_column(Date, nullable=False)
     raw_data: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
     fetched_at: Mapped[datetime] = mapped_column(
